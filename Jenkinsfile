@@ -1,20 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing'
-                input "ok?"
+                /root/tools/vendor/bin/phpunit test
             }
         }
-        stage('Deploy') {
+        stage('deploy') {
             steps {
-                echo 'Deploying'
+                input "ready to deploy? "
+                echo "Yay i'm live"
             }
         }
     }
