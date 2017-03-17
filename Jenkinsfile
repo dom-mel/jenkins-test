@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                /root/tools/vendor/bin/phpunit test
+                sh './root/tools/vendor/bin/phpunit test'
             }
         }
         stage('deploy') {
