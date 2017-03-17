@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                composer
+                sh 'composer install'
             }
         }
         stage('Test') {
             steps {
-                sh './root/tools/vendor/bin/phpunit test'
+                sh 'vendor/bin/phpunit test'
             }
         }
         stage('deploy') {
