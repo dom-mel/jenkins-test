@@ -2,7 +2,7 @@
 
 class Hello
 {
-    public function hello($name) {
-        echo "Hello $name";
+    public function sayHello($name) {
+        return "Hello $name";
     }
 }
