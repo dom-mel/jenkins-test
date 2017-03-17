@@ -10,6 +10,21 @@ pipeline {
             steps {
                 sh 'vendor/bin/phpunit --log-junit build/phpunit.xml --coverage-html build/coverage test'
             }
+            post {
+                always {
+                    junit 'build/phpunit.xml'
+                        publishHTML target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'build/coverage',
+                            reportFiles: 'index.html',
+                            reportName: 'RCov Report'
+                        ]
+
+                }
+            }
+
         }
         stage('deploy') {
             steps {
@@ -17,21 +32,6 @@ pipeline {
                 echo "Yay i'm live"
             }
         }
-        post {
-            always {
-                junit 'build/phpunit.xml'
-                publishHTML target: [
-                              allowMissing: false,
-                              alwaysLinkToLastBuild: false,
-                              keepAll: true,
-                              reportDir: 'build/coverage',
-                              reportFiles: 'index.html',
-                              reportName: 'RCov Report'
-                ]
-
-            }
-        }
-
 
     }
 }
