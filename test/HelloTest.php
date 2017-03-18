@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-include '../vendor/autoload.php';
+include __DIR__ . '/../vendor/autoload.php';
 
 class HelloTest extends TestCase
 {
