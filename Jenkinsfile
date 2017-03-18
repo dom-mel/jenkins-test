@@ -22,7 +22,7 @@ pipeline {
                             reportFiles: 'index.html',
                             reportName: 'Unit test coverage Report'
                         ]
-                    step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', checkstyle: 'build/cs.xml'])
+                    step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'build/cs.xml'])
 
                 }
             }
