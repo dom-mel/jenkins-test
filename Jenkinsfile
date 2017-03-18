@@ -30,7 +30,7 @@ pipeline {
                         keepAll: true,
                         reportDir: 'build/phpmetrics',
                         reportFiles: 'index.html',
-                        reportName: 'Unit test coverage Report'
+                        reportName: 'Metrix Report'
                     ]
                     step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'build/cs.xml'])
                     step([$class: 'PmdPublisher', pattern: 'build/phpmd.xml'])
