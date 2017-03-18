@@ -2,7 +2,8 @@
   "require": {
     "phpunit/phpunit": "5.7.*",
     "squizlabs/php_codesniffer": "*",
-    "phpmd/phpmd": "*"
+    "phpmd/phpmd": "*",
+    "phpmetrics/phpmetrics": "*"
   },
   "autoload": {
     "classmap": ["src/"]
