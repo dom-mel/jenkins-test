@@ -9,6 +9,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'vendor/bin/phpunit --log-junit build/phpunit.xml --coverage-html build/coverage test'
+                sh 'vendor/bin/phpcs --standard=PSR2 --report-checkstyle=build/cs.xml src/ || true'
             }
             post {
                 always {
@@ -19,8 +20,9 @@ pipeline {
                             keepAll: true,
                             reportDir: 'build/coverage',
                             reportFiles: 'index.html',
-                            reportName: 'RCov Report'
+                            reportName: 'Unit test coverage Report'
                         ]
+                    checkstyle build/cs.xml
 
                 }
             }
