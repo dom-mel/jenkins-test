@@ -22,7 +22,7 @@ pipeline {
                             reportFiles: 'index.html',
                             reportName: 'Unit test coverage Report'
                         ]
-                    checkstyle build/cs.xml
+                    hudson.plugins.checkstyle.CheckStylePublisher build/cs.xml
 
                 }
             }
