@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'vendor/bin/phpunit --log-junit build/phpunit.xml --coverage-html build/coverage test'
                 sh 'vendor/bin/phpcs --standard=PSR2 --report-checkstyle=build/cs.xml src/ || true'
+                sh 'vendor/bin/phpmd src/ xml cleancode --ignore-violations-on-exit --reportfile build/phpmd.xml'
             }
             post {
                 always {
@@ -23,6 +24,7 @@ pipeline {
                             reportName: 'Unit test coverage Report'
                         ]
                     step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: 'build/cs.xml'])
+                    step([$class: 'PmdPublisher', pattern: 'build/phpmd.xml'])
 
                 }
             }
